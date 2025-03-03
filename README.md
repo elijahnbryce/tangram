@@ -4,7 +4,7 @@
 <h4>2. Clone or fork this Unity project on github.</h4>
 <h4>3. Implement the Piece.cs class to add things like:</h4>
 <ul>
-	<li>Moving pieces</li>
+<li>Moving pieces</li>
 <li>Rotating pieces</li>
 <li>Puzzle completion detection</li>
 <li>Sounds and other effects for polish</li>
@@ -13,9 +13,9 @@
 <h4>4. Feel free to add more classes, models, small plugins, and modify any of the prefabs and setup given.</h4>
 <h4>5. Time expectation is around 2-3 hours.</h4>
 It is not expected that you will build a fully completed game, so it is up to you how you spend your time. Our
-audience is aged 4-10; think about creating a gameplay experience that will be easy for young kids.
+audience is aged 4-10; create a gameplay experience that will be easy for young kids.
 <h1>Requirements</h1>
-<h4>Project template was built in Unity 6000.0.38f1. Any Unity 6 LTS should work!</h4>
+<h4>This project template was built in Unity 6000.0.38f1. Any Unity 6 LTS should work!</h4>
 <h4>Target Desktop, WebGL, Android, or iOS.</h4>
 
 <h1>Rubric</h1>
