@@ -1,7 +1,7 @@
 <h1>Unity Developer Test</h1>
 Credit: This test was originally created by Joe Shochet, co-founder and CTO of codeSpark. Thanks, Joe!
 <h2>Instructions</h2>
-<h4>1. Implement a basic tangram game in Unity, starting from our project template.</h4>
+<h4>1. Implement a basic <a href="https://en.wikipedia.org/wiki/Tangram">tangram game</a> in Unity, starting from our project template.</h4>
 <h4>2. Clone or fork this Unity project on github.</h4>
 <h4>3. Implement the Piece.cs class to add things like:</h4>
 <ul>
