@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager _Instance;
 
     [SerializeField] private Transform PuzzleBox;
-    [SerializeField] private List<Transform> tanagrams;
-    private Transform tanagram;
+    [SerializeField] private List<Transform> tangrams;
+    private Transform tangram;
 
 
     private void Awake()
@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        tangram = null;
         SpawnTanagram();
     }
 
@@ -32,14 +33,11 @@ public class GameManager : MonoBehaviour
         if (PuzzleBox.childCount > 0)
             return;
 
-        foreach (Transform t in tanagram)
+        foreach (Transform t in tangram)
         {
             // make sure no shapes are stacked
             // check slot match
-            bool b = t.GetComponent<Shape>().CheckMatch();
-            Debug.Log($"{t.gameObject.name}: {b}");
             if (t.childCount != 1 || (t.GetComponent<Shape>().CheckMatch() == false)){
-                Debug.Log("not complete");
                 return;
             }
         }
@@ -49,16 +47,32 @@ public class GameManager : MonoBehaviour
 
     private void SpawnTanagram()
     {
-        Debug.Log("New gram");
-        if (tanagrams.Count > 0)
+        if (null != tangram)
         {
-            int i = Random.Range(0, tanagrams.Count);
-            tanagram = Instantiate(tanagrams[i], transform);
-            tanagrams.RemoveAt(i);
+            ResetChildren();
+            Destroy(tangram.gameObject);
+        }
+
+        if (tangrams.Count > 0)
+        {
+            int i = Random.Range(0, tangrams.Count);
+            tangram = Instantiate(tangrams[i], transform);
+            tangrams.RemoveAt(i);
         }
         else
         {
             GameOver();
+        }
+    }
+
+    private void ResetChildren()
+    {
+        foreach (Transform t in tangram)
+        {
+            foreach (Transform c in t)
+            {
+                c.GetComponent<Piece>().Respawn();
+            }
         }
     }
 
