@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
