@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc0d307e344d42a894d3fdd8f9eb077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shape: {fileID: 0}
+  silhouette: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64

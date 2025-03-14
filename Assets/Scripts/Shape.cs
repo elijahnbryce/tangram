@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class Shape : ScriptableObject
+public class Shape : MonoBehaviour
 {
     public enum geometry
     {
@@ -16,6 +15,21 @@ public class Shape : ScriptableObject
 
     public geometry silhouette;
     public float r_equivalance;
-    public float rot_tolerance;
     public float pos_tolerance;
+
+    public bool CheckPosition()
+    {
+        Transform child = transform.GetChild(0);
+        geometry comp = child.GetComponent<Piece>().silhouette;
+        if (silhouette == comp)
+        {
+            Vector3 dist = child.position;
+            dist.y = 0;
+            if (Vector3.Distance(dist, Vector3.zero) < pos_tolerance)
+            {
+                return (child.rotation.y % r_equivalance == 0);
+            }
+        }
+        return false;
+    }
 }
