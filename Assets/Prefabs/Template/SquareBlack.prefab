@@ -364,4 +364,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   silhouette: 3
   r_equivalance: 90
-  pos_tolerance: 0.7
+  pos_tolerance: 0.07

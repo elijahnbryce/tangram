@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class Piece : MonoBehaviour
 {
+    [Header("Shape")]
     public Shape.geometry silhouette;
     [SerializeField] private LayerMask layerMask;
 
@@ -15,9 +16,12 @@ public class Piece : MonoBehaviour
     private Vector3 spawnPos, grabPos;
     private float zPos;
 
+    private GameManager gm;
 
     private void Start()
     {
+        gm = GameManager._Instance;
+
         spawnParent = transform.parent;
         spawnPos = transform.position;
         spawnRot = transform.rotation;
@@ -69,31 +73,15 @@ public class Piece : MonoBehaviour
 
     public void OnMouseUp()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(transform.position));
         if (Physics.Raycast(ray, out RaycastHit hitData, 100, layerMask))
         {
             transform.parent = hitData.transform;
-            bool b = CheckPosition();
-            Debug.Log($"{gameObject.name} in correct pos: {b}");
+            gm.CheckFinish();
         }
+        else Respawn();
     }
 
-    public bool CheckPosition()
-    {
-        Shape comp = transform.parent.GetComponent<Shape>();
-        if (silhouette == comp.silhouette)
-        {
-            Vector3 dist = transform.localPosition;
-            dist.y = 0;
-            float f = Vector3.Distance(dist, Vector3.zero);
-            if (f < comp.pos_tolerance)
-            {
-                f = (transform.rotation.y % comp.r_equivalance);
-                return (Mathf.Abs(f) < 1f);
-            }
-        }
-        return false;
-    }
 
     private void Rotate(int r = 1)
     {

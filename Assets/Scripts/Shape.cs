@@ -17,17 +17,17 @@ public class Shape : MonoBehaviour
     public float r_equivalance;
     public float pos_tolerance;
 
-    public bool CheckPosition()
+    public bool CheckMatch()
     {
         Transform child = transform.GetChild(0);
         geometry comp = child.GetComponent<Piece>().silhouette;
         if (silhouette == comp)
         {
-            Vector3 dist = child.position;
+            Vector3 dist = child.localPosition;
             dist.y = 0;
             if (Vector3.Distance(dist, Vector3.zero) < pos_tolerance)
             {
-                return (child.rotation.y % r_equivalance == 0);
+                return (Mathf.Abs(child.rotation.y % r_equivalance) < 1f);
             }
         }
         return false;
