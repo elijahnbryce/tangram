@@ -15,7 +15,6 @@ public class Piece : MonoBehaviour
     private Quaternion spawnRot;
     private Vector3 spawnPos, grabPos;
     private float zPos;
-    public bool inPlace = false;
 
     private GameManager gm;
 
